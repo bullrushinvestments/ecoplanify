@@ -1,0 +1,115 @@
+import type { BuildCommand, EnvironmentVariables, HeaderRule, SecurityHeaders } from './types'; // Assuming custom types are defined in a separate file
+
+interface CacheControlStrategy {
+  matchPattern: string;
+  cacheTimeSeconds: number;
+}
+
+interface DeployConfig {
+  build: BuildCommand;
+  env: EnvironmentVariables;
+  headers: Array<HeaderRule>;
+  redirects: Array<{source: string; destination: string; statusCode?: number}>;
+  securityHeaders: SecurityHeaders;
+  cachingStrategies: Array<CacheControlStrategy>;
+  frameworkSettings: { [key: string]: any };
+}
+
+export const deployConfig: DeployConfig = {
+  build: {
+    command: 'next build',
+    output: '.next'
+  },
+  env: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    NEXT_PUBLIC_APP_NAME: process.env.NEXT_PUBLIC_APP_NAME
+  },
+  headers: [
+    {
+      source: '/api/:path*',
+      headers: [
+        { key: 'Access-Control-Allow-Credentials', value: 'true' },
+        { key: 'Access-Control-Allow-Origin', value: '*' }
+      ]
+    }
+  ],
+  redirects: [
+    { source: '/old-url', destination: '/new-url', statusCode: 301 }
+  ],
+  securityHeaders: {
+    referrerPolicy: 'strict-origin-when-cross-origin',
+    server: 'no-cache',
+    strictTransportSecurity: 'max-age=63072000; includeSubDomains; preload',
+    xContentTypeOptions: 'nosniff',
+    xFrameOptions: 'DENY',
+    xXssProtection: '1; mode=block'
+  },
+  cachingStrategies: [
+    {
+      matchPattern: '/api/:path*',
+      cacheTimeSeconds: 0
+    }
+  ],
+  frameworkSettings: {
+    vercel: { buildCommand: 'next build', startCommand: 'next start' },
+    netlify: { buildContext: 'production', functionsDir: '.netlify/functions' }
+  }
+};
+
+import type { BuildCommand, EnvironmentVariables, HeaderRule, SecurityHeaders } from './types'; // Assuming custom types are defined in a separate file
+
+interface CacheControlStrategy {
+  matchPattern: string;
+  cacheTimeSeconds: number;
+}
+
+interface DeployConfig {
+  build: BuildCommand;
+  env: EnvironmentVariables;
+  headers: Array<HeaderRule>;
+  redirects: Array<{source: string; destination: string; statusCode?: number}>;
+  securityHeaders: SecurityHeaders;
+  cachingStrategies: Array<CacheControlStrategy>;
+  frameworkSettings: { [key: string]: any };
+}
+
+export const deployConfig: DeployConfig = {
+  build: {
+    command: 'next build',
+    output: '.next'
+  },
+  env: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    NEXT_PUBLIC_APP_NAME: process.env.NEXT_PUBLIC_APP_NAME
+  },
+  headers: [
+    {
+      source: '/api/:path*',
+      headers: [
+        { key: 'Access-Control-Allow-Credentials', value: 'true' },
+        { key: 'Access-Control-Allow-Origin', value: '*' }
+      ]
+    }
+  ],
+  redirects: [
+    { source: '/old-url', destination: '/new-url', statusCode: 301 }
+  ],
+  securityHeaders: {
+    referrerPolicy: 'strict-origin-when-cross-origin',
+    server: 'no-cache',
+    strictTransportSecurity: 'max-age=63072000; includeSubDomains; preload',
+    xContentTypeOptions: 'nosniff',
+    xFrameOptions: 'DENY',
+    xXssProtection: '1; mode=block'
+  },
+  cachingStrategies: [
+    {
+      matchPattern: '/api/:path*',
+      cacheTimeSeconds: 0
+    }
+  ],
+  frameworkSettings: {
+    vercel: { buildCommand: 'next build', startCommand: 'next start' },
+    netlify: { buildContext: 'production', functionsDir: '.netlify/functions' }
+  }
+};

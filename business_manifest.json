@@ -1,0 +1,37 @@
+{
+  "name": "EcoPlanify",
+  "type": "saas",
+  "description": "EcoPlanify is an AI-driven SaaS platform that helps small businesses and e-commerce stores track their carbon footprint and implement sustainable practices. With personalized recommendations based on real-time data, EcoPlanify makes it easy for businesses to go green without compromising on efficiency.",
+  "generated_at": "2025-12-07T04:05:49.780337",
+  "components": [
+    "spec",
+    "build",
+    "deploy",
+    "spec_requirements",
+    "spec_architecture",
+    "build_code",
+    "build_test"
+  ],
+  "files_written": [
+    "businesses\\production_test\\saas\\ecoplanify\\src\\components\\component.tsx",
+    "businesses\\production_test\\saas\\ecoplanify\\__tests__\\component.test.tsx",
+    "businesses\\production_test\\saas\\ecoplanify\\vercel.json",
+    "businesses\\production_test\\saas\\ecoplanify\\src\\components\\requirements.tsx",
+    "businesses\\production_test\\saas\\ecoplanify\\__tests__\\architecture.test.tsx",
+    "businesses\\production_test\\saas\\ecoplanify\\vercel.json",
+    "businesses\\production_test\\saas\\ecoplanify\\src\\components\\test.tsx",
+    "businesses\\production_test\\saas\\ecoplanify\\src\\app\\layout.tsx",
+    "businesses\\production_test\\saas\\ecoplanify\\src\\app\\globals.css",
+    "businesses\\production_test\\saas\\ecoplanify\\src\\app\\page.tsx"
+  ],
+  "tasks_completed": 7,
+  "tasks_failed": 0,
+  "ap2_estimated_cost": 45.2,
+  "ap2_estimated_tokens": 19500,
+  "ap2_generation_approval": null,
+  "infrastructure_approvals": {
+    "analytics": null,
+    "database": null,
+    "storage": null
+  }
+}
